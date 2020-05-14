@@ -8,8 +8,8 @@ def generate_line(line, line_num, options):
 
     code = highlight.get_highlight(line, options.theme)
 
-    code_width = options.code_width #10 
-    code_height = options.code_height #6
+    code_width = options.code_width
+    code_height = options.code_height
     background_color = code['background']
 
     previous = (options.start_position, 0, background_color) # (x_position, width of rect, background color)
@@ -56,8 +56,8 @@ def generate_line(line, line_num, options):
 
 def generate_svg(lines, options):
 
-    width = options.width #1000
-    height = options.height #2000
+    width = options.width
+    height = options.height
 
     root = etree.Element(
         'svg', width=str(width), height=str(height), xmlns='http://www.w3.org/2000/svg'

@@ -22,20 +22,24 @@ def main():
     parser.add('--radius_rect', required=False, type=int, help='Radius for rounded corner')
     parser.add('--line_spacing', required=False, type=int, help='Line spacing')
 
-    parser.add('--auto_size', required=False, action='store_true', default=True)
+    parser.add('-a', '--auto_size', required=False, action='store_true', default=False, help='Choose width & height for you')
     # TODO : Add Random
     # TODO : Config File
     # TODO : URL
 
     options = parser.parse_args()
-    print(options)
+    
 
     with open(options.input, 'r') as infile:
         code_lines = infile.readlines()
 
     if options.auto_size:
         options.width = (max(len(line) for line in code_lines) * options.code_width) + options.start_position
-        options.height = (len(code_lines) + 1) * (options.code_height + options.line_spacing)
+        options.height = (len(code_lines) + 2) * (options.code_height + options.line_spacing)
+
+    options.theme = options.theme.lower()
+    
+    print(options)
 
     minicode.generate_svg(code_lines, options)
 
