@@ -1,5 +1,6 @@
 """Main module."""
 from lxml import etree
+import cairosvg
 
 import highlight
 import utils
@@ -74,9 +75,12 @@ def generate_svg(lines, options):
         root.append(generate_line(line, cpt, options))
         cpt += 1
 
+    data = etree.tostring(root, pretty_print=True)#.decode('utf8')
 
-    data = etree.tostring(root, pretty_print=True).decode('utf8')
-
-    print('Saving file : {}'.format(options.output))
-    with open(options.output, 'w') as outfile:
-        outfile.write(data)
+    if options.png:
+        print('Saving file : {}.png'.format(options.output))
+        cairosvg.svg2png(data, write_to='{}.png'.format(options.output))
+    else:
+        print('Saving file : {}.svg'.format(options.output))
+        with open(options.output, 'w') as outfile:
+            outfile.write(data.decode('utf8'))

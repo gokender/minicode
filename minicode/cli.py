@@ -26,6 +26,7 @@ def main():
     parser.add('-a', '--auto_size', required=False, action='store_true', default=False, help='Choose width & height for you')
     parser.add('--lexer', required=False, type=str, help='Code parser')
     parser.add('--url', required=False, type=str, default=None, help='Url to download')
+    parser.add('--png', required=False, action='store_true', default=False, help='Saving image in PNG')
 
     # TODO : Add Random
     # TODO : Config File
