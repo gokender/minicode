@@ -23,13 +23,15 @@ def main():
     parser.add('--line_spacing', required=False, type=int, help='Line spacing')
 
     parser.add('-a', '--auto_size', required=False, action='store_true', default=False, help='Choose width & height for you')
-    # TODO : Add Random
-    # TODO : Config File
-    # TODO : URL
-
-    options = parser.parse_args()
+    parser.add('--lexer', required=False, type=str, help='Code parser')
     
 
+    # TODO : Add Random
+    # TODO : Config File
+    # parser.add('-c', '--my-config', required=True, is_config_file=True, help='Config file path')
+    
+    options = parser.parse_args()
+    
     with open(options.input, 'r') as infile:
         code_lines = infile.readlines()
 

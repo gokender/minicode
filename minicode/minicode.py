@@ -6,7 +6,7 @@ import utils
 
 def generate_line(line, line_num, options):
 
-    code = highlight.get_highlight(line, options.theme)
+    code = highlight.get_highlight(line, options.lexer, options.theme)
 
     code_width = options.code_width
     code_height = options.code_height

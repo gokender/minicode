@@ -50,7 +50,7 @@ class JsonFormatter(Formatter):
         outfile.write(json.dumps(data))
 
 
-def get_highlight(line, theme): # TODO: Add lexer surcharge
-    lexer = get_lexer_by_name('python')
+def get_highlight(line, lexer_name, theme):
+    lexer = get_lexer_by_name(lexer_name)
     formatter = JsonFormatter(theme=theme)
     return json.loads(highlight(line, lexer, formatter))
