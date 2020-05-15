@@ -6,6 +6,8 @@ import highlight
 import utils
 
 def generate_line(line, line_num, options):
+    """
+    """
 
     code = highlight.get_highlight(line, options.lexer, options.theme)
 
@@ -82,5 +84,5 @@ def generate_svg(lines, options):
         cairosvg.svg2png(data, write_to='{}.png'.format(options.output))
     else:
         print('Saving file : {}.svg'.format(options.output))
-        with open(options.output, 'w') as outfile:
+        with open('{}.svg'.format(options.output), 'w') as outfile:
             outfile.write(data.decode('utf8'))
