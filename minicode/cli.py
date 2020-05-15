@@ -40,14 +40,15 @@ def main():
         response = requests.get(options.url)
         if response.status_code == 200:
             code_lines = response.text.splitlines()
+        else:
+            print('Error HTTP {} while fetching code'.format(response.status_code))
 
     if options.auto_size:
         options.width = (max(len(line) for line in code_lines) * options.code_width) + options.start_position
         options.height = (len(code_lines) + 2) * (options.code_height + options.line_spacing)
 
     options.theme = options.theme.lower()
-    
-    print(options)
+    #print(options)
 
     minicode.generate_svg(code_lines, options)
 

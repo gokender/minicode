@@ -76,6 +76,7 @@ def generate_svg(lines, options):
 
 
     data = etree.tostring(root, pretty_print=True).decode('utf8')
-    file_res = open(options.output, 'w')
-    file_res.write(data)
-    file_res.close()
+
+    print('Saving file : {}'.format(options.output))
+    with open(options.output, 'w') as outfile:
+        outfile.write(data)
