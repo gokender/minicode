@@ -3,6 +3,7 @@ import os
 import sys
 
 import configargparse
+import requests
 
 import minicode
 import utils
@@ -24,16 +25,21 @@ def main():
 
     parser.add('-a', '--auto_size', required=False, action='store_true', default=False, help='Choose width & height for you')
     parser.add('--lexer', required=False, type=str, help='Code parser')
-    
+    parser.add('--url', required=False, type=str, default=None, help='Url to download')
 
     # TODO : Add Random
     # TODO : Config File
     # parser.add('-c', '--my-config', required=True, is_config_file=True, help='Config file path')
     
     options = parser.parse_args()
-    
-    with open(options.input, 'r') as infile:
-        code_lines = infile.readlines()
+
+    if options.url is None:
+        with open(options.input, 'r') as infile:
+            code_lines = infile.readlines()
+    else:
+        response = requests.get(options.url)
+        if response.status_code == 200:
+            code_lines = response.text.splitlines()
 
     if options.auto_size:
         options.width = (max(len(line) for line in code_lines) * options.code_width) + options.start_position
