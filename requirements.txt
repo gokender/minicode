@@ -1,4 +1,4 @@
-lxml==4.6.2
+lxml==4.6.3
 ConfigArgParse==1.2.3
 Pygments==2.6.1
 requests==2.23.0
