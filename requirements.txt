@@ -1,5 +1,5 @@
 lxml==4.6.5
 ConfigArgParse==1.2.3
-Pygments==2.6.1
+Pygments==2.7.4
 requests==2.23.0
 CairoSVG==2.5.1
